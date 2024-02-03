@@ -15,6 +15,40 @@ class ProductController extends BaseCrudController
 {
     protected $model = Product::class;
 
+    public function getAll(Request $request)
+    {
+        try {
+            if ($request->has('category')) {
+                $categoryId = $request->query('category');
+                $perPage = $request->query('per_page', 9);
+                $items = $this->model::where('category_id', $categoryId)->paginate($perPage);
+            } else {
+                $perPage = $request->query('per_page', 9);
+                $items = $this->model::paginate($perPage);
+            }
+
+            return response()->json($items, Response::HTTP_OK);
+        } catch (ValidationException $e) {
+            return $this->handleValidationException($e);
+        } catch (\Exception $e) {
+            return $this->handleUnexpectedException($e);
+        }
+    }
+
+
+    public function getPromotion(Request $request)
+    {
+        try {
+            $items = Product::where('status', 'promotion')->get();
+
+            return response()->json($items, Response::HTTP_OK);
+        } catch (ValidationException $e) {
+            return $this->handleValidationException($e);
+        } catch (\Exception $e) {
+            return $this->handleUnexpectedException($e);
+        }
+    }
+
     public function getById($id)
     {
         try {
@@ -42,6 +76,7 @@ class ProductController extends BaseCrudController
                 'discount' => 'nullable|string',
                 'tags' => 'nullable|string',
                 'sku' => 'nullable|string',
+                'status' => 'nullable|string',
                 'product_detail' => 'required|string',
                 'additional_information' => 'nullable|string',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -108,6 +143,12 @@ class ProductController extends BaseCrudController
             DB::beginTransaction();
 
             try {
+                $updateProduct = Product::find($id);
+                if (!$updateProduct) {
+                    return response()->json([
+                        'message' => 'Product not found!'
+                    ], Response::HTTP_BAD_REQUEST);
+                }
                 $IsCategoryId = Category::find($request->category_id);
                 if (!$IsCategoryId) {
                     return response()->json([
@@ -135,6 +176,9 @@ class ProductController extends BaseCrudController
                         $item->images()->create(['image' => $imagePath]);
                     }
                 }
+
+
+                $updateProduct->update($request->all());
 
                 DB::commit();
 

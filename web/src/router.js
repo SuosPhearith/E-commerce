@@ -3,10 +3,30 @@ import ProductViewVue from "./views/product/ProductView.vue";
 import categoryViewVue from "./views/category/categoryView.vue";
 import categoryCreateViewVue from "./views/category/categoryCreateView.vue";
 import categoryUpdateViewVue from "./views/category/categoryUpdateView.vue";
-import LoginViewVue from "./views/login/LoginView.vue";
+import HomeVue from "./views/frontend/Home.vue";
+import ShopVue from "./views/frontend/Shop.vue";
+import LoginView from "./views/frontend/Login.vue";
+import RegisterView from "./views/frontend/Register.vue";
+import ProductDetailView from "./views/frontend/ProductDetail.vue";
+import AboutVue from "./views/frontend/About.vue";
+import ContactVue from "./views/frontend/Contact.vue";
 
 const routes = [
-  { path: "/backend/product", component: ProductViewVue },
+  {
+    path: "/auth/login",
+    name: "login_page",
+    component: LoginView,
+  },
+  {
+    path: "/auth/register",
+    name: "register_page",
+    component: RegisterView,
+  },
+  {
+    path: "/backend/product",
+    name: "product_index",
+    component: ProductViewVue,
+  },
   {
     path: "/backend/category",
     name: "category_index",
@@ -22,8 +42,31 @@ const routes = [
     name: "category_update",
     component: categoryUpdateViewVue,
   },
-  { path: "/backend/login", component: LoginViewVue },
-  // Add more routes here if needed
+  {
+    path: "/en/home",
+    name: "home_page",
+    component: HomeVue,
+  },
+  {
+    path: "/en/shop",
+    name: "shop_page",
+    component: ShopVue,
+  },
+  {
+    path: "/en/product/:id",
+    name: "product_detail_page",
+    component: ProductDetailView,
+  },
+  {
+    path: "/en/about",
+    name: "about_page",
+    component: AboutVue,
+  },
+  {
+    path: "/en/contact",
+    name: "contact_page",
+    component: ContactVue,
+  },
 ];
 
 const router = createRouter({

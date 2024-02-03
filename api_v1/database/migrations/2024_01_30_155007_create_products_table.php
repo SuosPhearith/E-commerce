@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('discount')->nullable();
             $table->string('tags');
+            $table->string('status');
             $table->text('additional_information');
             $table->text('image')->nullable(false);
             $table->float('average_review')->nullable(true);

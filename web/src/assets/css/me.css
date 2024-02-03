@@ -3,3 +3,612 @@
     margin-left: 2px;
     margin-right: 2px;
 }
+body{
+    margin: 0;
+    font-size: 16px;
+}
+.header-container{
+    /* background-color: rgb(128, 82, 172); */
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    transition: top 0.3s;
+    top: 0;
+    z-index: 9999;
+}
+.header-wrap{
+    /* background-color: antiquewhite; */
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+.header-top{
+    /* background-color: aquamarine; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.header-top-left{
+    /* background-color: blue; */
+    display: flex;
+}
+.header-top-left-item{
+    /* background-color: azure; */
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    color: black;
+}
+.header-top-left a:hover{
+    color: #cc9c00
+}
+.header-top-left-item-center{
+    /* background-color: azure; */
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    text-decoration: none;
+    color: black;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.header-top-right{
+    /* background-color: yellow; */
+    display: flex;
+}
+.header-top-right-item{
+    /* background-color: rgb(100, 86, 113); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    
+}
+.header-top-right-item img{
+    width: 25px;
+    height: 25px;
+}
+.header-top-right-item-child{
+    background-color: #fff5d6d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.header-top-right-item-child:hover{
+    background-color: #cc9c00;
+}
+.header-bottom{
+    /* background-color: #bb4c4c; */
+    transition: 0.4s;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 90px;
+    /* position: fixed; */
+}
+.header-bottom-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-bottom-left .logo img{
+    width: 200px;
+    /* background-color: aliceblue; */
+}
+
+.header-bottom-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: yellow; */
+}
+.header-bottom-right-icon{
+    display: none;
+    /* background-color: yellow; */
+}
+.header-bottom-right a{
+    font-size: 18px;
+    text-decoration: none;
+    padding: 30px 0;
+    margin-left: 30px;
+    color: black;
+}
+.header-bottom-right a:hover{
+    color: #cc9c00;
+}
+.page-content{
+    margin-top: 144px;
+}
+.content{
+    width: 100%;
+    height: 2000px;
+    background-color: antiquewhite;
+}
+.active{
+    color: #cc9c00 !important;
+}
+.my-breadcrumb {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .my-breadcrumb::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/Breadcrumb-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5; /* Adjust the opacity value (0.0 to 1.0) */
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
+  }
+  
+  .my-breadcrumb-title {
+    font-size: 50px;
+    z-index: 1; /* Ensure the text is above the pseudo-element */
+  }
+  
+  .my-breadcrumb-item a {
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    z-index: 1; /* Ensure the links are above the pseudo-element */
+  }
+  
+
+/* Extra Small (xs) */
+@media (max-width: 575.98px) {
+    /* Styles for xs screens go here */
+    .header-top{
+        display: none;
+    }
+    .page-content{
+        margin-top: 60px;
+    }
+    .header-bottom-left .logo img{
+        width: 100px;
+    }
+    .header-bottom-right{
+        display: none;
+    }
+    .header-bottom{
+        height: 60px;
+    }
+    
+    .header-bottom-right-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: yellow; */
+    }
+    
+    .my-breadcrumb{
+        height: 200px;
+    }
+    .my-breadcrumb-title{
+        font-size: 30px;
+    }
+  }
+  
+  /* Small (sm) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    /* Styles for sm screens go here */
+    .header-top{
+        display: none;
+    }
+    .page-content{
+        margin-top: 60px;
+    }
+    .header-bottom-left .logo img{
+        width: 150px;
+    }
+    .header-bottom-right{
+        display: none;
+    }
+    .header-bottom{
+        height: 60px;
+    }
+    
+    .header-bottom-right-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: yellow; */
+    }
+    
+    .my-breadcrumb{
+        height: 200px;
+    }
+    
+    .my-breadcrumb-title{
+        font-size: 40px;
+    }
+  }
+  
+  /* Medium (md) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    /* Styles for md screens go here */
+    .header-top{
+        display: none;
+    }
+    .page-content{
+        margin-top: 60px;
+    }
+    .header-bottom-left .logo img{
+        width: 150px;
+    }
+    .header-bottom{
+        height: 60px;
+    }
+    .my-breadcrumb{
+        height: 200px;
+    }
+  }
+  
+  /* Large (lg) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Styles for lg screens go here */
+  }
+  
+  /* Extra Large (xl) */
+  @media (min-width: 1200px) {
+    /* Styles for xl screens go here */
+  }
+  .form-control{
+    height: 45px;
+}
+.form-select{
+    height: 45px;
+}
+.tito-home-bg1{
+    background-color: #FBEBB5;
+    height: 700px;
+}
+
+.tito-home-bg1 h1{
+    margin-left: 10%;
+    font-size: 64px;
+    font-weight: medium;
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+}
+
+.tito-home-btn-shop{
+    width: 255px;
+    height: 64px;
+    
+}
+
+.tito-home-bg2{
+    background-color: #FAF4F4;
+}
+
+
+.tito-home-bg2-view{
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: medium;
+    border-bottom: 2px solid black;
+    width: 100px;
+}
+
+.tito-home-bg2 h4{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: medium;
+    color: #000000;
+}
+
+.tito-home-bg3-header{
+    text-align: center;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: medium;
+}
+
+.tito-home-bg3-des{
+    text-align: center;
+    color: #9F9F9F;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: medium;
+}
+
+.tito-home-bg4{
+    background-color: #FFF9E5;
+}
+
+.tito-home-bg4-new{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tito-home-btn{
+    background-color: #FFFFFF;
+    border-radius: 0px;
+    width: 255px;
+    height: 64px;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: medium;
+    padding: 10px 20px;
+    border: 1px solid #000000;
+    cursor: pointer;
+}
+
+.tito-home-btn:hover{
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.tito-home-bg5{
+    background-image: url("../images/ins_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+}
+
+.tito-shop-bg1{
+    background-image: url("../images/shop_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 316px;
+}
+
+.tito-carousel-img{
+    width: 600px;
+}
+.tito-home-rocket{
+    font-size: 40px;
+    width: 400px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    line-height: 70px;
+}
+.tito-home-rocket1 {
+    font-size: 65px;
+    width: 400px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 70px;
+}
+.card{
+    /* z-index: 1; */
+}
+.tito-card{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.tito-card:hover{
+    /* background-color: whitesmoke; */
+    border-radius: 3px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+.tito-card-img-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tito-card-show{
+    color: black;
+    text-decoration: none;
+    border-bottom: 2px solid black;
+    padding: 5px;
+}
+.tito-card-show:hover{
+    color:#bf9200;
+    border-bottom: 2px solid #bf9200;
+}
+.tito-card-show-more{
+    color: black;
+    text-decoration: none;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+    padding: 5px;
+}
+.tito-card-show-more:hover{
+    color:#bf9200;
+    border-bottom: 2px solid #bf9200;
+}
+.tito-section-2{
+    background-color: #FAF4F4;
+}
+.tito-end-1{
+    font-family: 'Poppins', sans-serif; 
+                        font-size: 60px; 
+                        font-weight: bold;
+                        color: #000000;
+}
+.tito-end-2{
+    font-family: 'Poppins', sans-serif; 
+                        font-size: 20; 
+                        font-weight: normal;
+}
+.tito-end-3:hover{
+    
+                            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+}
+.tito-end-3{
+                            font-size: 20px;
+                            font-weight: normal;
+                            color: #000000;
+                            background-color: #ffffff;
+                            border: none;
+                            border-radius: 50px;
+                            width: 200px;
+                            height: 64px;
+                            margin: 10px 0px;
+}
+
+
+
+
+/* Extra Small (xs) */
+@media (max-width: 575.98px) {
+    /* Styles for xs screens go here */
+    .tito-carousel-img{
+        width: 150px;
+    }
+    .tito-home-rocket{
+        font-size: 25px;
+        width: 200px;
+        line-height: 30px;
+        margin-bottom: 10px !important;
+    }
+    .tito-home-rocket1{
+        font-size: 35px;
+        width: 200px;
+        line-height: 30px;
+        margin-bottom: 10px !important;
+    }
+    .tito-home-bg1{
+        height: 200px;
+    }
+    .tito-home-btn-shop{
+        width: 100px;
+        height: 40px;
+    }
+    .tito-home-table{
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .tito-home-image{
+        width: 300px;
+        height: 300px;
+    }
+    .tito-end-1{
+        font-size: 40px;
+    }
+}
+  
+  /* Small (sm) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .tito-carousel-img{
+        width: 200px;
+    }
+    .tito-home-rocket{
+        font-size: 30px;
+    }
+    .tito-home-rocket1{
+        font-size: 45px;
+        width: 300px;
+        line-height: 30px;
+        margin-bottom: 10px !important;
+    }
+    .tito-home-bg1{
+        height: 300px;
+    }
+    .tito-home-btn-shop{
+        width: 100px;
+        height: 40px;
+    }
+    .tito-home-table{
+        width: 300px !important;
+        height: 300px !important;
+    }
+    .tito-home-image{
+        width: 300px;
+        height: 300px;
+    }
+    .tito-end-1{
+        font-size: 45px;
+    }
+}
+  
+  /* Medium (md) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+/* Styles for md screens go here */
+    .tito-carousel-img{
+        width: 400px;
+    }
+    .tito-home-rocket{
+        font-size: 40px;
+    }
+    .tito-home-rocket1{
+        font-size: 55px;
+        width: 400px;
+        line-height: 30px;
+        margin-bottom: 50px !important;
+    }
+    .tito-home-bg1{
+        height: 500px;
+    }
+    .tito-home-btn-shop{
+        width: 150px;
+        height: 50px;
+    }
+    .tito-home-image{
+        width: 300px;
+        height: 300px;
+    }
+    .tito-end-1{
+        font-size: 50px;
+    }
+}
+  
+  /* Large (lg) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Styles for lg screens go here */
+    .tito-carousel-img{
+        width: 500px;
+    }
+    .tito-home-rocket{
+        font-size: 50px;
+    }
+    .tito-home-rocket1{
+        font-size: 55px;
+        width: 350px;
+        line-height: 30px;
+        margin-bottom: 60px !important;
+    }
+    .tito-home-bg1{
+        height: 600px;
+    }
+  }
+  
+  /* Extra Large (xl) */
+  @media (min-width: 1200px) {
+    /* Styles for xl screens go here */
+    .tito-home-image{
+        width: 300px;
+        height: 300px;
+    }
+}
+.tito-home-card{
+    text-decoration: none;
+    color: black;
+    /* background-color: yellow; */
+    padding: 5px;
+    border-bottom: 2px solid black;
+}

@@ -2,55 +2,66 @@
   <div class="page-content">
     <div class="container-fluid text-center">
       <!-- bg1 -->
-      <div class="row align-items-center tito-home-bg1" v-if="promotionProducts.length > 0">
+      <div
+        class="row"
+        style="height: 600px; background-color: #fff9c4"
+        v-if="promotionProducts.length > 0"
+      >
         <div
-          class="col-6 d-flex justify-content-center align-items-center flex-column"
+          class="col-6 d-flex flex-column justify-content-center align-items-end"
+          style="height: 100%"
         >
-          <div class="tito-home-rocket">{{ promotionProducts[0].name }}</div>
-          <button
-            type="button"
-            class="btn btn-outline-secondary tito-home-btn-shop"
+          <div
+            class="d-flex flex-column justify-content-center align-items-center"
           >
-            Shop Now
-          </button>
+            <h1>{{ promotionProducts[0].name }}</h1>
+            <h4 class="my-3">{{ promotionProducts[0].description }}</h4>
+            <button class="btn btn-primary">Shop Now</button>
+          </div>
         </div>
-        <div class="col-6">
+        <div
+          class="col-6 d-flex flex-column justify-content-center align-items-center"
+        >
           <img
-            class="tito-carousel-img"
-            :src="`http://127.0.0.1:8000/${ promotionProducts[0].image }`"
+            style="max-height: 500px; object-fit: cover"
+            :src="`http://127.0.0.1:8000/${promotionProducts[0].image}`"
+            class="card-img"
+            alt="..."
           />
         </div>
       </div>
 
       <!-- bg2 -->
-      <div class="album py-5 bg-body-tertiary">
-        <h2 class="mb-1">Promotion</h2>
-        <p class="mb-5">Explore our product promotions for unbeatable discounts and exclusive offers. Join us today to enjoy savings and rewards!</p>
-        <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div v-for="item in promotionProducts" class="col">
-              <div class="card shadow-sm">
-                <img style="object-fit: cover; max-height: 300px;"
-                  :src="`http://127.0.0.1:8000/${ item.image }`"
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <p class="card-text">
-                    <h4>{{ item.name }}</h4>
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                    </div>
-                    <small class="text-body-secondary">{{item.price}}$</small>
-                  </div>
+      <div class="container my-5">
+        <h2 class="text-center mb-3 mt-4">Choose a product</h2>
+        <p class="text-muted text-center mb-4 pb-2">
+          Our product offers a comprehensive range of features and
+          functionalities tailored to meet the diverse needs of modern
+          businesses.
+        </p>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div v-for="item in promotionProducts" class="col">
+            <div class="card">
+              <img
+                :src="`http://127.0.0.1:8000/${item.image}`"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 18px">
+                  {{ item.name }}
+                </h5>
+                <p class="card-text text-secondary">{{ item.description }}</p>
+                <p class="card-text text-success">{{ item.price }}$</p>
+                <div class="mt-4 d-flex justify-content-center">
+                  <button class="btn btn-outline-primary">View Detail</button>
+
+                  <button class="btn btn-outline-danger btn-icon ms-1">
+                    <RiHeart3Line />
+                  </button>
+                  <button class="btn btn-outline-success btn-icon ms-1">
+                    <RiShoppingCartLine />
+                  </button>
                 </div>
               </div>
             </div>
@@ -58,126 +69,261 @@
         </div>
       </div>
       <!-- bg3 -->
-      <div class="album py-5 bg-body-tertiary">
-        <h2 class="mb-2">Popular product</h2>
-        <p class="mb-5">Our popular product offers top-notch quality and unbeatable value. Join countless satisfied customers and experience excellence today!</p>
-        <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div v-for="item in fetchedData.data" class="col">
-              <div class="card shadow-sm">
-                <img style="object-fit: cover; max-height: 300px;"
-                  :src="`http://127.0.0.1:8000/${ item.image }`"
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <p class="card-text">
-                    <h4>{{ item.name }}</h4>
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
+
+      <div class="container my-5">
+        <h2 class="text-center mb-3 mt-4">Choose a product</h2>
+        <p class="text-muted text-center mb-4 pb-2">
+          Our product offers a comprehensive range of features and
+          functionalities tailored to meet the diverse needs of modern
+          businesses.
+        </p>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div v-for="item in fetchedData.data" class="col">
+            <div class="card">
+              <img
+                :src="`http://127.0.0.1:8000/${item.image}`"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 18px">
+                  {{ item.name }}
+                </h5>
+                <p class="card-text text-secondary">{{ item.description }}</p>
+                <p class="card-text text-success">{{ item.price }}$</p>
+                <div class="mt-4 d-flex justify-content-center">
+                  <button class="btn btn-outline-primary">View Detail</button>
+
+                  <button class="btn btn-outline-danger btn-icon ms-1">
+                    <RiHeart3Line />
+                  </button>
+                  <button class="btn btn-outline-success btn-icon ms-1">
+                    <RiShoppingCartLine />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- bg4 -->
+      <div
+        class="row"
+        style="height: 600px; background-color: #fff9c4"
+        v-if="promotionProducts.length > 1"
+      >
+        <div
+          class="col-6 d-flex flex-column justify-content-center align-items-center"
+        >
+          <img
+            :src="`http://127.0.0.1:8000/${promotionProducts[1].image}`"
+            class="card-img"
+            alt="..."
+          />
+        </div>
+        <div
+          class="col-6 d-flex flex-column justify-content-center align-items-start"
+          style="height: 100%"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-center"
+          >
+            <h1>{{ promotionProducts[1].name }}</h1>
+            <h4 class="my-3">{{ promotionProducts[1].description }}</h4>
+            <button class="btn btn-primary">Shop Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- bg5 -->
+
+      <div class="row my-5">
+        <div class="col-md-12">
+          <h2 class="text-center mb-3 mt-4">Discount</h2>
+          <p class="text-muted text-center mb-4 pb-2">
+            Choose the features and functionality your team need today. Easily
+            upgrade as your company grows.
+          </p>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 stretch-card grid-margin grid-margin-md-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="text-center mt-3 mb-4">Discount</h4>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-award text-primary icon-xxl d-block mx-auto my-3"
+                    >
+                      <circle cx="12" cy="8" r="7"></circle>
+                      <polyline
+                        points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
+                      ></polyline>
+                    </svg>
+                    <h1 class="text-center">$20</h1>
+                    <p class="text-muted text-center mb-4 fw-light">
+                      per product
+                    </p>
+                    <h5 class="text-primary text-center mb-4">Up to 5 units</h5>
+                    <div class="d-grid">
+                      <button class="btn btn-primary mt-4">Shop Now</button>
                     </div>
-                    <small class="text-body-secondary">{{item.price}}$</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin grid-margin-md-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="text-center mt-3 mb-4">Discount</h4>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-gift text-success icon-xxl d-block mx-auto my-3"
+                    >
+                      <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                      <rect x="2" y="7" width="20" height="5"></rect>
+                      <line x1="12" y1="22" x2="12" y2="7"></line>
+                      <path
+                        d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"
+                      ></path>
+                      <path
+                        d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"
+                      ></path>
+                    </svg>
+                    <h1 class="text-center">$30</h1>
+                    <p class="text-muted text-center mb-4 fw-light">
+                      per product
+                    </p>
+                    <h5 class="text-success text-center mb-4">
+                      Up to 10 units
+                    </h5>
+                    <div class="d-grid">
+                      <button class="btn btn-success mt-4">Shop Now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="text-center mt-3 mb-4">Discount</h4>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-briefcase text-primary icon-xxl d-block mx-auto my-3"
+                    >
+                      <rect
+                        x="2"
+                        y="7"
+                        width="20"
+                        height="14"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <path
+                        d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                      ></path>
+                    </svg>
+                    <h1 class="text-center">$50</h1>
+                    <p class="text-muted text-center mb-4 fw-light">
+                      per product
+                    </p>
+                    <h5 class="text-primary text-center mb-4">
+                      Up to 30 units
+                    </h5>
+                    <div class="d-grid">
+                      <button class="btn btn-primary mt-4">Shop Now</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <RouterLink to="/en/shop" class="mt-4 see-more">See more</RouterLink>
-      </div>
-
-      <!-- bg4 -->
-      <div class="row align-items-center tito-home-bg1" v-if="promotionProducts.length > 1">
-        <div class="col-6">
-          <img class="tito-carousel-img" :src="`http://127.0.0.1:8000/${ promotionProducts[1].image }`" />
-        </div>
-        <div
-          class="col-6 d-flex justify-content-center align-items-center flex-column"
-        >
-          <div class="tito-home-rocket">{{ promotionProducts[1].name }}</div>
-          <button
-            type="button"
-            class="btn btn-outline-secondary tito-home-btn-shop"
-          >
-            Shop Now
-          </button>
-        </div>
-      </div>
-
-      <!-- bg5 -->
-
-      <div class="row tito-home-bg5 tito-section-2">
-        <div
-          class="col-md-12 d-flex flex-column justify-content-center align-items-center"
-        >
-          <h3 class="tito-end-1">Our Instagram</h3>
-          <span class="tito-end-2">Follow our store on Instagram </span>
-          <button class="tito-end-3">Follow Us</button>
-        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { RiHeart3Line, RiShoppingCartLine } from "vue-remix-icons";
 import { RouterLink } from "vue-router";
 import fetchData from "../../services/fetchData.js";
-export default{
-    data() {
-        return {
-            fetchedData: [],
-            promotionProducts: [],
-            isLoading: false,
-            confirmDelete: false,
-            deleteItemId: null,
-            apiUrl: "http://127.0.0.1:8000/api/v1/product",
-        };
+export default {
+  components: {
+    RiHeart3Line,
+    RiShoppingCartLine,
+  },
+  data() {
+    return {
+      fetchedData: [],
+      promotionProducts: [],
+      isLoading: false,
+      confirmDelete: false,
+      deleteItemId: null,
+      apiUrl: "http://127.0.0.1:8000/api/v1/product",
+    };
+  },
+  mounted() {
+    this.getAllProducts();
+    this.getPromotionProducts();
+  },
+  methods: {
+    async getAllProducts() {
+      this.isLoading = true;
+      try {
+        this.fetchedData = await fetchData("GET", `${this.apiUrl}`, null);
+        this.isLoading = false;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        this.isLoading = false;
+      }
     },
-    mounted() {
-        this.getAllProducts();
-        this.getPromotionProducts();
+    async getPromotionProducts() {
+      this.isLoading = true;
+      try {
+        this.promotionProducts = await fetchData(
+          "GET",
+          "http://127.0.0.1:8000/api/v1/product/promotion",
+          null
+        );
+        this.isLoading = false;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        this.isLoading = false;
+      }
     },
-    methods: {
-        async getAllProducts() {
-            this.isLoading = true;
-            try {
-                this.fetchedData = await fetchData("GET", `${this.apiUrl}`, null);
-                this.isLoading = false;
-            }
-            catch (error) {
-                console.error("Error fetching data:", error);
-                this.isLoading = false;
-            }
-        },
-        async getPromotionProducts() {
-            this.isLoading = true;
-            try {
-                this.promotionProducts = await fetchData("GET", "http://127.0.0.1:8000/api/v1/product/promotion", null);
-                this.isLoading = false;
-            }
-            catch (error) {
-                console.error("Error fetching data:", error);
-                this.isLoading = false;
-            }
-        },
-    },
-    components: { RouterLink }
-}
+  },
+};
 </script>
 
 <style scoped>
-.see-more{
+.see-more {
   cursor: pointer;
   font-size: 25px;
 }
-.see-more:hover{
+.see-more:hover {
   color: goldenrod;
 }
 </style>

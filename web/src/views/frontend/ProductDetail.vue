@@ -1,7 +1,11 @@
 <template>
   <div>
-    <button class="btn btn-primary me-3">Add to Cart</button>
-    <button class="btn btn-primary">Add to Wishlist</button>
+    <button @click="addToCart()" class="btn btn-primary me-3">
+      Add to Cart
+    </button>
+    <button @click="addToWishlist()" class="btn btn-primary">
+      Add to Wishlist
+    </button>
     {{ data }}
   </div>
 </template>
@@ -27,6 +31,26 @@ export default {
           `http://127.0.0.1:8000/api/v1/product/${this.$route.params.id}`,
           null
         );
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async addToCart() {
+      try {
+        // Access $route.params.id using this.$route
+        await fetchData("POST", "http://127.0.0.1:8000/api/v1/cart", {
+          product_id: this.$route.params.id,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async addToWishlist() {
+      try {
+        // Access $route.params.id using this.$route
+        await fetchData("POST", "http://127.0.0.1:8000/api/v1/wishlist", {
+          product_id: this.$route.params.id,
+        });
       } catch (error) {
         console.error("Error fetching data:", error);
       }

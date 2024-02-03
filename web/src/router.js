@@ -10,6 +10,9 @@ import RegisterView from "./views/frontend/Register.vue";
 import ProductDetailView from "./views/frontend/ProductDetail.vue";
 import AboutVue from "./views/frontend/About.vue";
 import ContactVue from "./views/frontend/Contact.vue";
+import CartVue from "./views/frontend/Cart.vue";
+import WishlistVue from "./views/frontend/Wishlist.vue";
+import ProfileVue from "./views/frontend/Profile.vue";
 
 const routes = [
   {
@@ -66,6 +69,21 @@ const routes = [
     path: "/en/contact",
     name: "contact_page",
     component: ContactVue,
+  },
+  {
+    path: "/en/cart",
+    name: "cart_page",
+    component: CartVue,
+  },
+  {
+    path: "/en/wishlist",
+    name: "wishlist_page",
+    component: WishlistVue,
+  },
+  {
+    path: "/en/profile",
+    name: "profile_page",
+    component: ProfileVue,
   },
 ];
 

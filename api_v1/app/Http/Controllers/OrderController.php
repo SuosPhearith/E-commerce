@@ -33,6 +33,7 @@ class OrderController extends Controller
                 'address' => 'required|min:3',
                 'city' => 'required|min:3',
                 'country' => 'required|min:3',
+                'postal_code' => 'required|min:3',
                 'phone' => 'required|min:8',
                 'email' => 'required|email',
                 'product' => 'required|array',
@@ -43,12 +44,11 @@ class OrderController extends Controller
             $item['user_id'] = auth()->user()->id;
 
             $order = Order::create($item);
-
-            foreach ($request->product as $productId) {
-                $productPrice = Product::find($productId)->price;
+            foreach ($request->product as $product) {
+                $productPrice = Product::find($product['id'])->price;
                 $orderDetail = new OrderDetail([
                     'order_id' => $order->id,
-                    'product_id' => $productId,
+                    'product_id' => $product['id'],
                     'price' => $productPrice,
                 ]);
                 $orderDetail->save();

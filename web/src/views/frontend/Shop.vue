@@ -42,8 +42,12 @@
             </div>
           </div>
         </div>
-        <form class="col-md-4 d-flex ms-auto mb-3">
+        <form
+          @submit.prevent="handleSearch()"
+          class="col-md-4 d-flex ms-auto mb-3"
+        >
           <input
+            v-model="search"
             class="form-control me-2"
             type="search"
             placeholder="Search"
@@ -152,6 +156,7 @@ export default {
   },
   data() {
     return {
+      search: "",
       fetchedData: [],
       categories: [],
       isLoading: false,
@@ -173,6 +178,20 @@ export default {
         this.fetchedData = await fetchData(
           "GET",
           `${this.productEndPoint}`,
+          null
+        );
+        this.isLoading = false;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        this.isLoading = false;
+      }
+    },
+    async handleSearch() {
+      this.isLoading = true;
+      try {
+        this.fetchedData = await fetchData(
+          "GET",
+          `${this.productEndPoint}?search=${this.search}`,
           null
         );
         this.isLoading = false;

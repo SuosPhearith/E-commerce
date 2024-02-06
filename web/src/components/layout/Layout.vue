@@ -1,6 +1,5 @@
 <template>
   <div class="main-wrapper">
-    <!-- partial:../../partials/_sidebar.html -->
     <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">Phearith <span>UI</span></a>

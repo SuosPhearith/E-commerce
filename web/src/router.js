@@ -13,6 +13,8 @@ import ContactVue from "./views/frontend/Contact.vue";
 import CartVue from "./views/frontend/Cart.vue";
 import WishlistVue from "./views/frontend/Wishlist.vue";
 import ProfileVue from "./views/frontend/Profile.vue";
+import OwnVue from "./views/frontend/Own.vue";
+import OrderVue from "./views/frontend/Order.vue";
 
 const routes = [
   {
@@ -81,9 +83,19 @@ const routes = [
     component: WishlistVue,
   },
   {
+    path: "/en/own",
+    name: "own_page",
+    component: OwnVue,
+  },
+  {
     path: "/en/profile",
     name: "profile_page",
     component: ProfileVue,
+  },
+  {
+    path: "/en/order",
+    name: "order_page",
+    component: OrderVue,
   },
 ];
 

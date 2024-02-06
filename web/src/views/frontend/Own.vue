@@ -2,11 +2,11 @@
   <div>
     <div>
       <div class="my-breadcrumb my-breadcrumb-image">
-        <h2 class="my-breadcrumb-title">Cart</h2>
+        <h2 class="my-breadcrumb-title">My Pruduct</h2>
         <div class="my-breadcrumb-item">
           <RouterLink to="/en/home">Home</RouterLink
           ><RiArrowRightSLine style="width: 15px" />
-          <a href="">Cart</a>
+          <a href="">My Pruduct</a>
         </div>
       </div>
     </div>
@@ -38,31 +38,16 @@
                   <td>{{ item.price }}$</td>
                   <td>
                     <button
-                      @click="removeCart(item.cart_id)"
+                      @click="addToCart(item.product_id, item.wishlist_id)"
                       type="button"
-                      class="btn btn-danger btn-icon btn-xs"
+                      class="btn btn-primary btn-xs ms-2"
                     >
-                      <RiDeleteBinFill />
+                      Review
                     </button>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div class="d-flex align-items-center justify-content-end">
-              <div
-                class="mt-4 me-5 d-flex flex-column align-items-center justify-content-center"
-              >
-                <h3>Total Price: {{ totalPrice }}$</h3>
-                <router-link
-                  to="/en/order"
-                  type="button"
-                  class="btn btn-outline-secondary btn-lg mt-3"
-                  style="width: 200px"
-                >
-                  Checkout
-                </router-link>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -71,55 +56,65 @@
 </template>
 
 <script>
-import { RiArrowRightSLine, RiDeleteBinFill } from "vue-remix-icons";
+import {
+  RiArrowRightSLine,
+  RiDeleteBinFill,
+  RiShoppingCartLine,
+} from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
 export default {
   components: {
     RiArrowRightSLine,
     RiDeleteBinFill,
+    RiShoppingCartLine,
   },
   data() {
     return {
       data: [],
     };
   },
-  computed: {
-    totalPrice() {
-      // Use reduce to sum item.price values
-      const totalPrice = this.data.reduce(
-        (total, item) => total + parseFloat(item.price),
-        0
-      );
-
-      // Use toFixed to trim to two decimal places and convert to string
-      return totalPrice.toFixed(2);
-    },
-  },
   mounted() {
-    this.getCart();
+    this.getWishlist();
   },
   methods: {
-    async getCart() {
+    async getWishlist() {
       try {
         // Access $route.params.id using this.$route
         this.data = await fetchData(
           "GET",
-          "http://127.0.0.1:8000/api/v1/cart/cart",
+          "http://127.0.0.1:8000/api/v1/wishlist/wishlist",
           null
         );
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     },
-    async removeCart(id) {
+    async removeWishlist(id) {
       try {
         // Access $route.params.id using this.$route
         await fetchData(
           "DELETE",
-          `http://127.0.0.1:8000/api/v1/cart/${id}`,
+          `http://127.0.0.1:8000/api/v1/wishlist/${id}`,
           null
         );
-        this.getCart();
+        this.getWishlist();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async addToCart(productId, wishlistId) {
+      try {
+        // Access $route.params.id using this.$route
+        await fetchData("POST", "http://127.0.0.1:8000/api/v1/cart", {
+          product_id: productId,
+        });
+        await fetchData(
+          "DELETE",
+          `http://127.0.0.1:8000/api/v1/wishlist/${wishlistId}`,
+          null
+        );
+
+        this.getWishlist();
       } catch (error) {
         console.error("Error fetching data:", error);
       }

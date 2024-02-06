@@ -74,6 +74,9 @@
             >
               <RiShoppingCartLine class="my-icon" style="width: 18px" />
             </router-link>
+            <router-link to="/en/own" :class="{ active: isActive('/en/own') }">
+              <RiInstanceLine class="my-icon" style="width: 18px" />
+            </router-link>
           </div>
           <div class="dropdown header-bottom-right-icon">
             <div
@@ -255,6 +258,7 @@ import {
   RiHeart3Line,
   RiShoppingCartLine,
   RiMenuLine,
+  RiInstanceLine,
 } from "vue-remix-icons";
 import logo from "../../assets/img/logo.png";
 import { RouterLink } from "vue-router";
@@ -271,6 +275,7 @@ export default {
     RiShoppingCartLine,
     RouterLink,
     RiMenuLine,
+    RiInstanceLine,
   },
   data() {
     return {

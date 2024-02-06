@@ -38,7 +38,7 @@
                   <td>{{ item.price }}$</td>
                   <td>
                     <button
-                      @click="removeWishlist(item.cart_id)"
+                      @click="removeWishlist(item.wishlist_id)"
                       type="button"
                       class="btn btn-danger btn-icon btn-xs"
                     >

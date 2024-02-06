@@ -47,6 +47,14 @@ class WishlistController extends BaseCrudController
             $request->validate([
                 'product_id' => 'required|integer',
             ]);
+            // Check if the user has already added the product to the cart
+            $existingCartItem = $this->model::where('user_id', auth()->user()->id)
+                ->where('product_id', $request->product_id)
+                ->first();
+
+            if ($existingCartItem) {
+                return response()->json(['message' => 'Product has already been added to the wishlist.'], Response::HTTP_CONFLICT);
+            }
             $data = array(
                 'user_id' => auth()->user()->id,
                 'product_id' => $request->product_id,

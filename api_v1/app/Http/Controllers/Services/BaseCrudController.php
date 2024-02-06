@@ -61,7 +61,16 @@ class BaseCrudController extends Controller
             return $this->handleUnexpectedException($e);
         }
     }
+    protected function getModelName()
+    {
+        return class_basename($this->model);
+    }
+    protected function getCurrentUserId()
+    {
+        return Auth::id();
+    }
 
+    //::::::::::::::::>> Start helper
     protected function handleValidationException(ValidationException $e)
     {
         return response()->json([
@@ -76,16 +85,8 @@ class BaseCrudController extends Controller
             'message' => 'Server Error',
         ], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+    //::::::::::::::::>> Start helper
 
-    protected function getModelName()
-    {
-        return class_basename($this->model);
-    }
-
-    protected function getCurrentUserId()
-    {
-        return Auth::id();
-    }
 }
 
 /*

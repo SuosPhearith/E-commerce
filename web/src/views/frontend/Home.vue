@@ -2,11 +2,7 @@
   <div class="page-content">
     <div class="container-fluid text-center">
       <!-- bg1 -->
-      <div
-        class="row"
-        style="height: 600px; background-color: #fff9c4"
-        v-if="promotionProducts.length > 0"
-      >
+      <div class="row phearith-banner" v-if="promotionProducts.length > 0">
         <div
           class="col-6 d-flex flex-column justify-content-center align-items-end"
           style="height: 100%"
@@ -14,9 +10,17 @@
           <div
             class="d-flex flex-column justify-content-center align-items-center"
           >
-            <h1>{{ promotionProducts[0].name }}</h1>
-            <h4 class="my-3">{{ promotionProducts[0].description }}</h4>
-            <button class="btn btn-primary">Shop Now</button>
+            <h1 class="phearith-banner-title">
+              {{ promotionProducts[0].name }}
+            </h1>
+            <h4 class="my-3 phearith-bannner-description">
+              {{ promotionProducts[0].description }}
+            </h4>
+            <router-link
+              :to="`/en/product/${promotionProducts[0].id}`"
+              class="btn btn-primary"
+              >Shop Now</router-link
+            >
           </div>
         </div>
         <div
@@ -33,7 +37,12 @@
 
       <!-- bg2 -->
       <div class="container my-5">
-        <h2 class="text-center mb-3 mt-4">Choose a product</h2>
+        <h2
+          class="text-center mb-3 mt-4"
+          style="text-transform: uppercase; color: goldenrod"
+        >
+          Choose a promotion product
+        </h2>
         <p class="text-muted text-center mb-4 pb-2">
           Our product offers a comprehensive range of features and
           functionalities tailored to meet the diverse needs of modern
@@ -54,12 +63,22 @@
                 <p class="card-text text-secondary">{{ item.description }}</p>
                 <p class="card-text text-success">{{ item.price }}$</p>
                 <div class="mt-4 d-flex justify-content-center">
-                  <button class="btn btn-outline-primary">View Detail</button>
+                  <router-link
+                    :to="`/en/product/${item.id}`"
+                    class="btn btn-outline-primary"
+                    >View Detail</router-link
+                  >
 
-                  <button class="btn btn-outline-danger btn-icon ms-1">
+                  <button
+                    @click="addToWishlist(item.id)"
+                    class="btn btn-outline-danger btn-icon ms-1"
+                  >
                     <RiHeart3Line />
                   </button>
-                  <button class="btn btn-outline-success btn-icon ms-1">
+                  <button
+                    @click="addToCart(item.id)"
+                    class="btn btn-outline-success btn-icon ms-1"
+                  >
                     <RiShoppingCartLine />
                   </button>
                 </div>
@@ -71,7 +90,12 @@
       <!-- bg3 -->
 
       <div class="container my-5">
-        <h2 class="text-center mb-3 mt-4">Choose a product</h2>
+        <h2
+          class="text-center mb-3 mt-4"
+          style="text-transform: uppercase; color: goldenrod"
+        >
+          Choose a product
+        </h2>
         <p class="text-muted text-center mb-4 pb-2">
           Our product offers a comprehensive range of features and
           functionalities tailored to meet the diverse needs of modern
@@ -92,12 +116,22 @@
                 <p class="card-text text-secondary">{{ item.description }}</p>
                 <p class="card-text text-success">{{ item.price }}$</p>
                 <div class="mt-4 d-flex justify-content-center">
-                  <button class="btn btn-outline-primary">View Detail</button>
+                  <router-link
+                    :to="`/en/product/${item.id}`"
+                    class="btn btn-outline-primary"
+                    >View Detail</router-link
+                  >
 
-                  <button class="btn btn-outline-danger btn-icon ms-1">
+                  <button
+                    @click="addToWishlist(item.id)"
+                    class="btn btn-outline-danger btn-icon ms-1"
+                  >
                     <RiHeart3Line />
                   </button>
-                  <button class="btn btn-outline-success btn-icon ms-1">
+                  <button
+                    @click="addToCart(item.id)"
+                    class="btn btn-outline-success btn-icon ms-1"
+                  >
                     <RiShoppingCartLine />
                   </button>
                 </div>
@@ -105,14 +139,15 @@
             </div>
           </div>
         </div>
+        <div class="mt-5 d-flex justify-content-center">
+          <router-link to="/en/shop" class="phearith-see-more"
+            >See More</router-link
+          >
+        </div>
       </div>
 
       <!-- bg4 -->
-      <div
-        class="row"
-        style="height: 600px; background-color: #fff9c4"
-        v-if="promotionProducts.length > 1"
-      >
+      <div class="row phearith-banner" v-if="promotionProducts.length > 1">
         <div
           class="col-6 d-flex flex-column justify-content-center align-items-center"
         >
@@ -129,9 +164,17 @@
           <div
             class="d-flex flex-column justify-content-center align-items-center"
           >
-            <h1>{{ promotionProducts[1].name }}</h1>
-            <h4 class="my-3">{{ promotionProducts[1].description }}</h4>
-            <button class="btn btn-primary">Shop Now</button>
+            <h1 class="phearith-bannner-title">
+              {{ promotionProducts[1].name }}
+            </h1>
+            <h4 class="my-3 phearith-bannner-description">
+              {{ promotionProducts[1].description }}
+            </h4>
+            <router-link
+              :to="`/en/product/${promotionProducts[1].id}`"
+              class="btn btn-primary"
+              >Shop Now</router-link
+            >
           </div>
         </div>
       </div>
@@ -140,7 +183,12 @@
 
       <div class="row my-5">
         <div class="col-md-12">
-          <h2 class="text-center mb-3 mt-4">Discount</h2>
+          <h2
+            class="text-center mb-3 mt-4"
+            style="text-transform: uppercase; color: goldenrod"
+          >
+            Discount
+          </h2>
           <p class="text-muted text-center mb-4 pb-2">
             Choose the features and functionality your team need today. Easily
             upgrade as your company grows.
@@ -174,7 +222,9 @@
                     </p>
                     <h5 class="text-primary text-center mb-4">Up to 5 units</h5>
                     <div class="d-grid">
-                      <button class="btn btn-primary mt-4">Shop Now</button>
+                      <router-link to="/en/shop" class="btn btn-primary mt-4"
+                        >Shop Now</router-link
+                      >
                     </div>
                   </div>
                 </div>
@@ -213,7 +263,9 @@
                       Up to 10 units
                     </h5>
                     <div class="d-grid">
-                      <button class="btn btn-success mt-4">Shop Now</button>
+                      <router-link to="/en/shop" class="btn btn-success mt-4"
+                        >Shop Now</router-link
+                      >
                     </div>
                   </div>
                 </div>
@@ -314,6 +366,26 @@ export default {
         this.isLoading = false;
       }
     },
+    async addToCart(productId) {
+      try {
+        // Access $route.params.id using this.$route
+        await fetchData("POST", "http://127.0.0.1:8000/api/v1/cart", {
+          product_id: productId,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async addToWishlist(productId) {
+      try {
+        // Access $route.params.id using this.$route
+        await fetchData("POST", "http://127.0.0.1:8000/api/v1/wishlist", {
+          product_id: productId,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
   },
 };
 </script>
@@ -325,5 +397,70 @@ export default {
 }
 .see-more:hover {
   color: goldenrod;
+}
+.phearith-banner {
+  height: 600px;
+  background-color: #fff9c4;
+}
+.phearith-see-more {
+  width: fit-content;
+  font-size: 22px;
+  color: goldenrod;
+  cursor: pointer;
+  border-bottom: 2px solid goldenrod;
+}
+.phearith-see-more:hover {
+  font-size: 22px;
+  color: rgb(184, 133, 7);
+  cursor: pointer;
+  border-bottom: 2px solid rgb(184, 133, 7);
+}
+/* CSS for screens smaller than 576px (extra small devices) */
+@media (max-width: 575.98px) {
+  /* Your CSS rules for extra small devices go here */
+  .phearith-banner {
+    height: 300px;
+  }
+  .phearith-bannner-description {
+    font-size: 16px;
+  }
+}
+
+/* CSS for screens between 576px and 767.98px (small devices) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Your CSS rules for small devices go here */
+  .phearith-banner {
+    height: 350px;
+  }
+  .phearith-bannner-description {
+    font-size: 16px;
+  }
+  .phearith-bannner-title {
+    font-size: 20px;
+  }
+}
+
+/* CSS for screens between 768px and 991.98px (medium devices) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Your CSS rules for medium devices go here */
+  .phearith-banner {
+    height: 400px;
+  }
+  .phearith-bannner-description {
+    font-size: 20px;
+  }
+}
+
+/* CSS for screens between 992px and 1199.98px (large devices) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Your CSS rules for large devices go here */
+  .phearith-banner {
+    height: 450px;
+  }
+}
+
+/* CSS for screens larger than 1200px (extra large devices) */
+@media (min-width: 1200px) {
+  /* Your CSS rules for extra large devices go here */
 }
 </style>

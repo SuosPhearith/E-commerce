@@ -18,14 +18,20 @@ class ProductController extends BaseCrudController
     public function getAll(Request $request)
     {
         try {
+            $query = $this->model::query();
+
             if ($request->has('category')) {
                 $categoryId = $request->query('category');
-                $perPage = $request->query('per_page', 9);
-                $items = $this->model::where('category_id', $categoryId)->paginate($perPage);
-            } else {
-                $perPage = $request->query('per_page', 9);
-                $items = $this->model::paginate($perPage);
+                $query->where('category_id', $categoryId);
             }
+
+            if ($request->has('search')) {
+                $searchTerm = $request->query('search');
+                $query->where('name', 'like', '%' . $searchTerm . '%');
+            }
+
+            $perPage = $request->query('per_page', 9);
+            $items = $query->paginate($perPage);
 
             return response()->json($items, Response::HTTP_OK);
         } catch (ValidationException $e) {

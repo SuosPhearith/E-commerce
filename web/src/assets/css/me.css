@@ -612,3 +612,7 @@ body{
     padding: 5px;
     border-bottom: 2px solid black;
 }
+
+.auth-side-wrapper{
+    background-image: url('../img/login.jpg') !important;
+}

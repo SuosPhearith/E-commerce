@@ -1,5 +1,17 @@
 <template>
-  <div class="container card my-5 p-5">
+  <div>
+    <div class="my-breadcrumb my-breadcrumb-image">
+        <h2 class="my-breadcrumb-title">Contact</h2>
+        <div class="my-breadcrumb-item">
+          <RouterLink to="/en/home">Home</RouterLink
+          ><RiArrowRightSLine style="width: 15px" />
+          <a href="">Contact</a>
+        </div>
+      </div>
+      <div class="container card my-5 p-5">
+    <div class="sethy-contact-flex1">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.741180889949!2d104.89551077600457!3d11.570402744045277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109517388680e15%3A0x63057e6682968f5!2sInstitute%20of%20Technology%20of%20Cambodia!5e0!3m2!1sen!2skh!4v1707295187453!5m2!1sen!2skh" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ></iframe>
+        </div>
     <div class="sethy-contact-getintouch text-center">
       Get In Touch With Us
     </div>
@@ -76,15 +88,19 @@
       </div>
     </div>
   </div>
+  </div>
+ 
 </template>
 
 <script>
-import { RiArrowRightSLine } from "vue-remix-icons";
+import fetchData from "../../services/fetchData.js";
+import { RiArrowRightSLine, RiDeleteBinFill } from "vue-remix-icons";
 export default {
   components: {
     RiArrowRightSLine,
+    RiDeleteBinFill,
   },
-};
+}
 </script>
 <style scoped>
 /* Checkout-Html */

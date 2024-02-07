@@ -25,7 +25,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in data">
+                <tr v-for="(item, index) in data" :key="item.id">
                   <th>{{ index + 1 }}</th>
                   <td>
                     <img

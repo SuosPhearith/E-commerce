@@ -7,6 +7,7 @@
       Add to Wishlist
     </button>
     {{ data }}
+    {{ reviews }}
   </div>
 </template>
 
@@ -16,11 +17,13 @@ import fetchData from "../../services/fetchData.js";
 export default {
   data() {
     return {
-      data: null,
+      data: [],
+      reviews: [],
     };
   },
   mounted() {
     this.getProductById();
+    this.getProductReview();
   },
   methods: {
     async getProductById() {
@@ -29,6 +32,18 @@ export default {
         this.data = await fetchData(
           "GET",
           `http://127.0.0.1:8000/api/v1/product/${this.$route.params.id}`,
+          null
+        );
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async getProductReview() {
+      try {
+        // Access $route.params.id using this.$route
+        this.reviews = await fetchData(
+          "GET",
+          `http://127.0.0.1:8000/api/v1/review/product/${this.$route.params.id}`,
           null
         );
       } catch (error) {

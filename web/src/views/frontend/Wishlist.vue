@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <div>
       <div class="my-breadcrumb my-breadcrumb-image">
         <h2 class="my-breadcrumb-title">Wishlist</h2>
@@ -40,14 +40,14 @@
                     <button
                       @click="removeWishlist(item.wishlist_id)"
                       type="button"
-                      class="btn btn-danger btn-icon btn-xs"
+                      class="btn btn-outline-danger btn-icon btn-xs"
                     >
                       <RiDeleteBinFill />
                     </button>
                     <button
                       @click="addToCart(item.product_id, item.wishlist_id)"
                       type="button"
-                      class="btn btn-primary btn-icon btn-xs ms-2"
+                      class="btn btn-outline-primary btn-icon btn-xs ms-2"
                     >
                       <RiShoppingCartLine />
                     </button>

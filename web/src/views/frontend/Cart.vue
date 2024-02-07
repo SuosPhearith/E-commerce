@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <div>
       <div class="my-breadcrumb my-breadcrumb-image">
         <h2 class="my-breadcrumb-title">Cart</h2>
@@ -40,7 +40,7 @@
                     <button
                       @click="removeCart(item.cart_id)"
                       type="button"
-                      class="btn btn-danger btn-icon btn-xs"
+                      class="btn btn-outline-danger btn-icon btn-xs"
                     >
                       <RiDeleteBinFill />
                     </button>
@@ -85,13 +85,10 @@ export default {
   },
   computed: {
     totalPrice() {
-      // Use reduce to sum item.price values
       const totalPrice = this.data.reduce(
         (total, item) => total + parseFloat(item.price),
         0
       );
-
-      // Use toFixed to trim to two decimal places and convert to string
       return totalPrice.toFixed(2);
     },
   },

@@ -74,7 +74,10 @@
             >
               <RiShoppingCartLine class="my-icon" style="width: 18px" />
             </router-link>
-            <router-link to="/en/own" :class="{ active: isActive('/en/own') }">
+            <router-link
+              to="/en/myProduct"
+              :class="{ active: isActive('/en/myProduct') }"
+            >
               <RiInstanceLine class="my-icon" style="width: 18px" />
             </router-link>
           </div>
@@ -102,6 +105,14 @@
                   class="dropdown-item"
                   :class="{ active: isActive('/en/wishlist') }"
                   ><i class="ri-heart-3-line me-2"></i>Wishlist</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  to="/en/myProduct"
+                  class="dropdown-item"
+                  :class="{ active: isActive('/en/myProduct') }"
+                  ><i class="ri-heart-3-line me-2"></i>My Product</router-link
                 >
               </li>
               <li>

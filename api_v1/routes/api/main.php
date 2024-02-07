@@ -18,4 +18,6 @@ Route::group(['middleware' => 'auth'], function () {
     require(__DIR__ . '/wishlist.php');
     // :::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Order
     require(__DIR__ . '/order.php');
+    // :::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Review
+    require(__DIR__ . '/Review.php');
 });

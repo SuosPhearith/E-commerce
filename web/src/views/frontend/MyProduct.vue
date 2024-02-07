@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <div>
       <div class="my-breadcrumb my-breadcrumb-image">
         <h2 class="my-breadcrumb-title">My Pruduct</h2>
@@ -21,6 +21,7 @@
                   <th>Image</th>
                   <th>Name</th>
                   <th>Price</th>
+                  <th>Quantity</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -36,14 +37,15 @@
                   </td>
                   <td>{{ item.name }}</td>
                   <td>{{ item.price }}$</td>
+                  <td>{{ item.count }}</td>
                   <td>
-                    <button
-                      @click="addToCart(item.product_id, item.wishlist_id)"
+                    <router-link
+                      :to="`/en/review/${item.id}`"
                       type="button"
-                      class="btn btn-primary btn-xs ms-2"
+                      class="btn btn-outline-primary btn-xs ms-2"
                     >
                       Review
-                    </button>
+                    </router-link>
                   </td>
                 </tr>
               </tbody>
@@ -56,17 +58,11 @@
 </template>
 
 <script>
-import {
-  RiArrowRightSLine,
-  RiDeleteBinFill,
-  RiShoppingCartLine,
-} from "vue-remix-icons";
+import { RiArrowRightSLine } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
 export default {
   components: {
     RiArrowRightSLine,
-    RiDeleteBinFill,
-    RiShoppingCartLine,
   },
   data() {
     return {
@@ -74,47 +70,17 @@ export default {
     };
   },
   mounted() {
-    this.getWishlist();
+    this.getOrderByUser();
   },
   methods: {
-    async getWishlist() {
+    async getOrderByUser() {
       try {
         // Access $route.params.id using this.$route
         this.data = await fetchData(
           "GET",
-          "http://127.0.0.1:8000/api/v1/wishlist/wishlist",
+          "http://127.0.0.1:8000/api/v1/order/product",
           null
         );
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    },
-    async removeWishlist(id) {
-      try {
-        // Access $route.params.id using this.$route
-        await fetchData(
-          "DELETE",
-          `http://127.0.0.1:8000/api/v1/wishlist/${id}`,
-          null
-        );
-        this.getWishlist();
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    },
-    async addToCart(productId, wishlistId) {
-      try {
-        // Access $route.params.id using this.$route
-        await fetchData("POST", "http://127.0.0.1:8000/api/v1/cart", {
-          product_id: productId,
-        });
-        await fetchData(
-          "DELETE",
-          `http://127.0.0.1:8000/api/v1/wishlist/${wishlistId}`,
-          null
-        );
-
-        this.getWishlist();
       } catch (error) {
         console.error("Error fetching data:", error);
       }

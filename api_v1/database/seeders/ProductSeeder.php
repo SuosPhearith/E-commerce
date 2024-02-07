@@ -28,6 +28,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'sofa, leather, modern',
                 'additional_information' => 'Available colors: black, white, brown.',
                 'modified_by' => 1,
+                'average_review' => 4.50,
             ],
             [
                 'name' => 'Nordic Oak Coffee Table',
@@ -43,6 +44,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'sofa, leather, modern',
                 'additional_information' => 'Available colors: black, white, brown.',
                 'modified_by' => 1,
+                'average_review' => 4.50,
             ],
             [
                 'name' => 'Vintage Velvet Armchair',
@@ -58,6 +60,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'sofa, leather, modern',
                 'additional_information' => 'Available colors: black, white, brown.',
                 'modified_by' => 1,
+                'average_review' => 4.50,
             ],
             [
                 'name' => 'Rustic Pine Dining Table',
@@ -73,6 +76,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'sofa, leather, modern',
                 'additional_information' => 'Available colors: black, white, brown.',
                 'modified_by' => 1,
+                'average_review' => 4.50,
             ],
             [
                 'name' => 'Contemporary Leather Sectional',
@@ -88,6 +92,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'sofa, leather, modern',
                 'additional_information' => 'Available colors: black, white, brown.',
                 'modified_by' => 1,
+                'average_review' => 4.50,
             ],
             [
                 'name' => 'Industrial Metal Bar Stools',
@@ -103,6 +108,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'sofa, leather, modern',
                 'additional_information' => 'Available colors: black, white, brown.',
                 'modified_by' => 1,
+                'average_review' => 4.50,
             ],
         ]);
     }

@@ -22,6 +22,7 @@ class Product extends Model
         'tags',
         'additional_information',
         'modified_by',
+        'average_review'
     ];
 
     public function images()

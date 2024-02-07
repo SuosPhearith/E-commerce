@@ -75,6 +75,11 @@
                 {{ item.name }}
               </h5>
               <p class="card-text text-secondary">{{ item.description }}</p>
+              <p
+                class="card-text text-danger d-flex align-items-center justify-content-center"
+              >
+                {{ item.average_review }}<RiStarSFill style="width: 16px" />
+              </p>
               <p class="card-text text-success">{{ item.price }}$</p>
               <div class="mt-4 d-flex justify-content-center">
                 <router-link
@@ -144,6 +149,7 @@ import {
   RiHeart3Line,
   RiShoppingCartLine,
   RiArrowRightSLine,
+  RiStarSFill,
 } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
 import { RouterLink } from "vue-router";
@@ -153,6 +159,7 @@ export default {
     RiShoppingCartLine,
     RiArrowRightSLine,
     RiHeart3Line,
+    RiStarSFill,
   },
   data() {
     return {

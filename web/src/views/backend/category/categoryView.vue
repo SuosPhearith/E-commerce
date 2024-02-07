@@ -123,7 +123,7 @@ import {
   RiDeleteBinLine,
   RiInformationLine,
 } from "vue-remix-icons";
-import fetchData from "../../services/fetchData.js";
+import fetchData from "../../../services/fetchData.js";
 import { RouterLink } from "vue-router";
 
 export default {

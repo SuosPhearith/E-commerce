@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
@@ -45,15 +47,46 @@ class OrderController extends Controller
 
             $order = Order::create($item);
             foreach ($request->product as $product) {
-                $productPrice = Product::find($product['id'])->price;
+                $productPrice = Product::find($product['product_id'])->price;
                 $orderDetail = new OrderDetail([
                     'order_id' => $order->id,
-                    'product_id' => $product['id'],
+                    'product_id' => $product['product_id'],
                     'price' => $productPrice,
                 ]);
                 $orderDetail->save();
             }
+            Cart::where('user_id', auth()->user()->id)->delete();
             return response()->json(["message" => "Order successsfully."], Response::HTTP_OK);
+        } catch (ValidationException $e) {
+            return $this->handleValidationException($e);
+        } catch (\Exception $e) {
+            return $this->handleUnexpectedException($e);
+        }
+    }
+    public function getProductOrder()
+    {
+        try {
+
+            // Retrieve the IDs of orders associated with the authenticated user
+            $orderIds = Order::where('user_id', auth()->user()->id)->pluck('id');
+
+            // Count the occurrences of each product in the OrderDetail table
+            $productCounts = OrderDetail::whereIn('order_id', $orderIds)
+                ->select('product_id', DB::raw('COUNT(*) as count'))
+                ->groupBy('product_id')
+                ->get();
+
+            // Join the Product table to retrieve product information
+            $products = Product::whereIn('id', $productCounts->pluck('product_id')->all())->get();
+
+            // Add the count information to the products
+            $productsWithCounts = $products->map(function ($product) use ($productCounts) {
+                $count = $productCounts->where('product_id', $product->id)->first()->count ?? 0;
+                $product->count = $count;
+                return $product;
+            });
+
+            return response()->json($productsWithCounts, Response::HTTP_OK);
         } catch (ValidationException $e) {
             return $this->handleValidationException($e);
         } catch (\Exception $e) {

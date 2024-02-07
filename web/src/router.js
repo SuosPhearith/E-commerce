@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import ProductViewVue from "./views/product/ProductView.vue";
-import categoryViewVue from "./views/category/categoryView.vue";
-import categoryCreateViewVue from "./views/category/categoryCreateView.vue";
-import categoryUpdateViewVue from "./views/category/categoryUpdateView.vue";
+import ProductViewVue from "./views/backend/product/ProductView.vue";
+import categoryViewVue from "./views/backend/category/categoryView.vue";
+import categoryCreateViewVue from "./views/backend/category/categoryCreateView.vue";
+import categoryUpdateViewVue from "./views/backend/category/categoryUpdateView.vue";
 import HomeVue from "./views/frontend/Home.vue";
 import ShopVue from "./views/frontend/Shop.vue";
 import LoginView from "./views/frontend/Login.vue";
@@ -13,8 +13,9 @@ import ContactVue from "./views/frontend/Contact.vue";
 import CartVue from "./views/frontend/Cart.vue";
 import WishlistVue from "./views/frontend/Wishlist.vue";
 import ProfileVue from "./views/frontend/Profile.vue";
-import OwnVue from "./views/frontend/Own.vue";
+import MyProductVue from "./views/frontend/MyProduct.vue";
 import OrderVue from "./views/frontend/Order.vue";
+import ReviewVue from "./views/frontend/Review.vue";
 
 const routes = [
   {
@@ -83,9 +84,9 @@ const routes = [
     component: WishlistVue,
   },
   {
-    path: "/en/own",
-    name: "own_page",
-    component: OwnVue,
+    path: "/en/myProduct",
+    name: "myProduct_page",
+    component: MyProductVue,
   },
   {
     path: "/en/profile",
@@ -96,6 +97,11 @@ const routes = [
     path: "/en/order",
     name: "order_page",
     component: OrderVue,
+  },
+  {
+    path: "/en/review/:id",
+    name: "review_page",
+    component: ReviewVue,
   },
 ];
 

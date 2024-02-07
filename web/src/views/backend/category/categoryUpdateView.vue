@@ -40,7 +40,7 @@
 
 <script>
 import { RouterLink } from "vue-router";
-import fetchData from "../../services/fetchData.js";
+import fetchData from "../../../services/fetchData.js";
 export default {
   data() {
     return {

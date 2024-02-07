@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-4">
     <div>
       <div class="my-breadcrumb my-breadcrumb-image">
         <h2 class="my-breadcrumb-title">About</h2>
@@ -58,7 +58,7 @@
                   <div class="card-body">
                     <div class="w-100 bg-primary d-flex justify-content-center">
                       <img
-                        :src="phearith"
+                        :src="kheang"
                         alt="image"
                         style="
                           width: 100%;
@@ -68,7 +68,7 @@
                         "
                       />
                     </div>
-                    <h3 class="mt-3">Suos Phearith</h3>
+                    <h3 class="mt-3">Song Kheang</h3>
                     <h5 class="my-3 text-secondary">Backend Developer</h5>
                     <p>
                       <span
@@ -80,7 +80,7 @@
                       <span
                         ><RiMailLine class="me-2" style="width: 20px"
                       /></span>
-                      suosphearith@gmail.com
+                      songkheang@gmail.com
                     </p>
                     <div class="d-grid">
                       <button class="btn btn-primary mt-4">Contact</button>
@@ -93,7 +93,7 @@
                   <div class="card-body">
                     <div class="w-100 bg-primary d-flex justify-content-center">
                       <img
-                        :src="phearith"
+                        :src="tito"
                         alt="image"
                         style="
                           width: 100%;
@@ -103,7 +103,7 @@
                         "
                       />
                     </div>
-                    <h3 class="mt-3">Suos Phearith</h3>
+                    <h3 class="mt-3">Tom Tito</h3>
                     <h5 class="my-3 text-secondary">Backend Developer</h5>
                     <p>
                       <span
@@ -115,7 +115,7 @@
                       <span
                         ><RiMailLine class="me-2" style="width: 20px"
                       /></span>
-                      suosphearith@gmail.com
+                      tomtito@gmail.com
                     </p>
                     <div class="d-grid">
                       <button class="btn btn-primary mt-4">Contact</button>
@@ -128,7 +128,7 @@
                   <div class="card-body">
                     <div class="w-100 bg-primary d-flex justify-content-center">
                       <img
-                        :src="phearith"
+                        :src="sethy"
                         alt="image"
                         style="
                           width: 100%;
@@ -138,7 +138,7 @@
                         "
                       />
                     </div>
-                    <h3 class="mt-3">Suos Phearith</h3>
+                    <h3 class="mt-3">Vann Chansethy</h3>
                     <h5 class="my-3 text-secondary">Backend Developer</h5>
                     <p>
                       <span
@@ -150,7 +150,7 @@
                       <span
                         ><RiMailLine class="me-2" style="width: 20px"
                       /></span>
-                      suosphearith@gmail.com
+                      vannchansethy@gmail.com
                     </p>
                     <div class="d-grid">
                       <button class="btn btn-primary mt-4">Contact</button>
@@ -169,6 +169,10 @@
 <script>
 import { RiArrowRightSLine, RiPhoneLine, RiMailLine } from "vue-remix-icons";
 import phearith from "../../assets/img/phearith.jpg";
+import kheang from "../../assets/img/kheang.jpg";
+import tito from "../../assets/img/tito.jpg";
+import sethy from "../../assets/img/sethy.jpg";
+
 export default {
   components: {
     RiArrowRightSLine,
@@ -178,6 +182,9 @@ export default {
   data() {
     return {
       phearith: phearith,
+      kheang: kheang,
+      tito: tito,
+      sethy: sethy,
     };
   },
 };

@@ -23,6 +23,43 @@
                   <div class="card-body">
                     <div class="w-100 bg-primary d-flex justify-content-center">
                       <img
+                        :src="kheang"
+                        alt="image"
+                        style="
+                          width: 100%;
+                          height: 100%;
+                          /* border-radius: 50%; */
+                          object-fit: cover;
+                        "
+                      />
+                    </div>
+                    <h3 class="mt-3">Song Kheang</h3>
+                    <h5 class="my-3 text-secondary">Project Manager</h5>
+                    <p>
+                      <span
+                        ><RiPhoneLine class="me-2" style="width: 20px"
+                      /></span>
+                      096 325 6565
+                    </p>
+                    <p>
+                      <span
+                        ><RiMailLine class="me-2" style="width: 20px"
+                      /></span>
+                      songkheang@gmail.com
+                    </p>
+                    <div class="d-grid">
+                      <button class="btn btn-outline-primary mt-4">
+                        Contact
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 stretch-card grid-margin grid-margin-md-0">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="w-100 bg-primary d-flex justify-content-center">
+                      <img
                         :src="phearith"
                         alt="image"
                         style="
@@ -48,42 +85,9 @@
                       suosphearith@gmail.com
                     </p>
                     <div class="d-grid">
-                      <button class="btn btn-primary mt-4">Contact</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 stretch-card grid-margin grid-margin-md-0">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="w-100 bg-primary d-flex justify-content-center">
-                      <img
-                        :src="kheang"
-                        alt="image"
-                        style="
-                          width: 100%;
-                          height: 100%;
-                          /* border-radius: 50%; */
-                          object-fit: cover;
-                        "
-                      />
-                    </div>
-                    <h3 class="mt-3">Song Kheang</h3>
-                    <h5 class="my-3 text-secondary">Backend Developer</h5>
-                    <p>
-                      <span
-                        ><RiPhoneLine class="me-2" style="width: 20px"
-                      /></span>
-                      069 265 958
-                    </p>
-                    <p>
-                      <span
-                        ><RiMailLine class="me-2" style="width: 20px"
-                      /></span>
-                      songkheang@gmail.com
-                    </p>
-                    <div class="d-grid">
-                      <button class="btn btn-primary mt-4">Contact</button>
+                      <button class="btn btn-outline-primary mt-4">
+                        Contact
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -104,12 +108,12 @@
                       />
                     </div>
                     <h3 class="mt-3">Tom Tito</h3>
-                    <h5 class="my-3 text-secondary">Backend Developer</h5>
+                    <h5 class="my-3 text-secondary">Frontend Developer</h5>
                     <p>
                       <span
                         ><RiPhoneLine class="me-2" style="width: 20px"
                       /></span>
-                      069 265 958
+                      099 326 932
                     </p>
                     <p>
                       <span
@@ -118,7 +122,9 @@
                       tomtito@gmail.com
                     </p>
                     <div class="d-grid">
-                      <button class="btn btn-primary mt-4">Contact</button>
+                      <button class="btn btn-outline-primary mt-4">
+                        Contact
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -139,12 +145,12 @@
                       />
                     </div>
                     <h3 class="mt-3">Vann Chansethy</h3>
-                    <h5 class="my-3 text-secondary">Backend Developer</h5>
+                    <h5 class="my-3 text-secondary">Designer</h5>
                     <p>
                       <span
                         ><RiPhoneLine class="me-2" style="width: 20px"
                       /></span>
-                      069 265 958
+                      070 707 635
                     </p>
                     <p>
                       <span
@@ -153,7 +159,9 @@
                       vannchansethy@gmail.com
                     </p>
                     <div class="d-grid">
-                      <button class="btn btn-primary mt-4">Contact</button>
+                      <button class="btn btn-outline-primary mt-4">
+                        Contact
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Services\FileUploadController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -115,6 +117,51 @@ class AuthController extends Controller
             return response()->json(['message' => 'Successfully logged out']);
         } catch (\Exception $e) {
             // ===> Unexpected error
+            return response()->json([
+                'message' => 'Server Error',
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+    /**
+     * update user (Invalidate the token).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateMe(Request $request)
+    {
+        try {
+            // return dd($request->file('image'));
+            $item = User::find(auth()->user()->id);
+            if (!$item) {
+                return response()->json(['message' => 'Not found'], Response::HTTP_NOT_FOUND);
+            }
+
+            $data = $request->validate([
+                'name' => 'nullable|string',
+                'password' => 'nullable|min:8',
+                'new_password' => 'nullable|min:8',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            if ($request->hasFile('image')) {
+                $image = FileUploadController::storeImage($request->file('image'), 'uploads/users');
+                $data['image'] = $image;
+            } else {
+                $data['image'] = $item->image;
+            }
+
+            if ($data['new_password'] && $data['password']) {
+                $isPassword = auth()->attempt(['email' => $item->email, 'password' => $data['password']]);
+                if (!$isPassword) {
+                    return response()->json(['message' => 'Old password incorrect!'], Response::HTTP_BAD_REQUEST);
+                } else {
+                    $data['password'] = Hash::make($data['new_password']);
+                }
+            }
+
+            $item->update($data);
+            return response()->json(['message' => 'Successfully updated']);
+        } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Server Error',
             ], Response::HTTP_INTERNAL_SERVER_ERROR);

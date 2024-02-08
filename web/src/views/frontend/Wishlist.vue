@@ -31,7 +31,12 @@
                     <img
                       :src="`http://127.0.0.1:8000/${item.image}`"
                       alt="iamge"
-                      style="height: 70px; width: 100px; object-fit: cover"
+                      style="
+                        height: 70px;
+                        width: 100px;
+                        object-fit: cover;
+                        border-radius: 0%;
+                      "
                     />
                   </td>
                   <td>{{ item.name }}</td>

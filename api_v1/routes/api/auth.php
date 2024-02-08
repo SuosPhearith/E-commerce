@@ -11,4 +11,5 @@ Route::group([
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('refresh', [AuthController::class, 'refresh']);
     Route::get('me', [AuthController::class, 'me']);
+    Route::patch('updateMe', [AuthController::class, 'updateMe']);
 });

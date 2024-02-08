@@ -18,7 +18,8 @@
             </h4>
             <router-link
               :to="`/en/product/${promotionProducts[0].id}`"
-              class="btn btn-primary"
+              class="btn btn-outline-primary"
+              style="width: 150px"
               >Shop Now</router-link
             >
           </div>

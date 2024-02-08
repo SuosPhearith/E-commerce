@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('postal_code')->nullable();
             $table->text('phone')->nullable(false);
             $table->text('email')->nullable(false);
-            $table->text('status')->default('pending');
+            $table->text('status')->nullable();
             $table->timestamps();
         });
     }

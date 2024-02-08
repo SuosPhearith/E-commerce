@@ -130,7 +130,7 @@ class ProductController extends BaseCrudController
         // return $id;
         // return $request->all();
         try {
-            $request->validate([
+            $data = $request->validate([
                 'name' => 'required|string',
                 'price' => 'required',
                 'description' => 'nullable|string',
@@ -143,7 +143,7 @@ class ProductController extends BaseCrudController
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'images' => 'nullable|array',
                 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'quantity' => 'required|integer|min:0'
+                'quantity' => 'nullable|integer|min:0'
             ]);
 
             DB::beginTransaction();
@@ -169,7 +169,7 @@ class ProductController extends BaseCrudController
                 if ($request->hasFile('image')) {
                     FileUploadController::DeleteImage($item->image);
                     $image = FileUploadController::storeImage($request->file('image'), 'uploads/products');
-                    $item->update(['image' => $image]);
+                    $data['image'] = $image;
                 }
 
                 if ($request->hasFile('images')) {
@@ -184,7 +184,7 @@ class ProductController extends BaseCrudController
                 }
 
 
-                $updateProduct->update($request->all());
+                $updateProduct->update($data);
 
                 DB::commit();
 

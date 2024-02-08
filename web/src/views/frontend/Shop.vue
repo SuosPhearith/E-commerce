@@ -1,147 +1,152 @@
 <template>
   <div>
-    <div class="my-breadcrumb my-breadcrumb-image">
-      <h2 class="my-breadcrumb-title">Shop</h2>
-      <div class="my-breadcrumb-item">
-        <RouterLink to="/en/home">Home</RouterLink
-        ><RiArrowRightSLine style="width: 15px" />
-        <a href="">shop</a>
+    <div>
+      <div class="my-breadcrumb my-breadcrumb-image">
+        <h2 class="my-breadcrumb-title">Shop</h2>
+        <div class="my-breadcrumb-item">
+          <RouterLink to="/en/home">Home</RouterLink
+          ><RiArrowRightSLine style="width: 15px" />
+          <a href="">shop</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    class="container-fluid pb-3 pt-4 mt-5 phearith-search"
-    style="background-color: antiquewhite"
-  >
-    <div class="container">
-      <nav
-        class="row navbar navbar-light bg-light w-100"
-        style="
-          position: static !important;
-          background-color: antiquewhite !important;
-          border: none;
-          box-shadow: none;
-        "
-      >
-        <div class="col-md-8 col-sm-12 mb-3">
-          <div class="container d-flex category-scroll">
-            <div
-              @click="filterByCategory('/')"
-              class="p-2 me-2 px-4 d-flex justify-content-center align-items-center category-item-all"
-              style="width: fit-content; border-radius: 5px"
-            >
-              <p>All</p>
-            </div>
-            <div
-              v-for="category in categories.data"
-              @click="filterByCategory(`/?category=${category.id}`)"
-              class="p-2 me-2 px-4 d-flex justify-content-center align-items-center category-item"
-              style="width: fit-content; border-radius: 5px"
-            >
-              <p>{{ category.name }}</p>
+    <div
+      class="container-fluid pb-3 pt-4 mt-5 phearith-search"
+      style="background-color: antiquewhite"
+    >
+      <div class="container">
+        <nav
+          class="row navbar navbar-light bg-light w-100"
+          style="
+            position: static !important;
+            background-color: antiquewhite !important;
+            border: none;
+            box-shadow: none;
+          "
+        >
+          <div class="col-md-8 col-sm-12 mb-3">
+            <div class="container d-flex category-scroll">
+              <div
+                @click="filterByCategory('/')"
+                class="p-2 me-2 px-4 d-flex justify-content-center align-items-center category-item-all"
+                style="width: fit-content; border-radius: 5px"
+              >
+                <p>All</p>
+              </div>
+              <div
+                v-for="category in categories.data" :key="category.id"
+                @click="filterByCategory(`/?category=${category.id}`)"
+                class="p-2 me-2 px-4 d-flex justify-content-center align-items-center category-item"
+                style="width: fit-content; border-radius: 5px"
+              >
+                <p>{{ category.name }}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <form
-          @submit.prevent="handleSearch()"
-          class="col-md-4 d-flex ms-auto mb-3"
-        >
-          <input
-            v-model="search"
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </nav>
-    </div>
-  </div>
-
-  <!-- bg3 -->
-  <div class="py-5">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div v-for="item in fetchedData.data" class="col text-center">
-          <div class="card">
-            <img
-              :src="`http://127.0.0.1:8000/${item.image}`"
-              class="card-img-top"
-              alt="..."
+          <form
+            @submit.prevent="handleSearch()"
+            class="col-md-4 d-flex ms-auto mb-3"
+          >
+            <input
+              v-model="search"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
             />
-            <div class="card-body">
-              <h5 class="card-title" style="font-size: 18px">
-                {{ item.name }}
-              </h5>
-              <p class="card-text text-secondary">{{ item.description }}</p>
-              <p
-                class="card-text text-danger d-flex align-items-center justify-content-center"
-              >
-                {{ item.average_review }}<RiStarSFill style="width: 16px" />
-              </p>
-              <p class="card-text text-success">{{ item.price }}$</p>
-              <div class="mt-4 d-flex justify-content-center">
-                <router-link
-                  :to="`/en/product/${item.id}`"
-                  class="btn btn-outline-primary"
-                  >View Detail</router-link
-                >
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </nav>
+      </div>
+    </div>
 
-                <button
-                  @click="addToWishlist(item.id)"
-                  class="btn btn-outline-danger btn-icon ms-1"
+    <!-- bg3 -->
+    <div class="py-5">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div v-for="item in fetchedData.data" :key="item.id" class="col text-center">
+            <div class="card">
+              <div class="" style="height: 300px;">
+                  <img
+                  style="height: 100%; object-fit: contain;"
+                    :src="`http://127.0.0.1:8000/${item.image}`"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                </div>
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 18px">
+                  {{ item.name }}
+                </h5>
+                <p class="card-text text-secondary">{{ item.description }}</p>
+                <p
+                  class="card-text text-danger d-flex align-items-center justify-content-center"
                 >
-                  <RiHeart3Line />
-                </button>
-                <button
-                  @click="addToCart(item.id)"
-                  class="btn btn-outline-success btn-icon ms-1"
-                >
-                  <RiShoppingCartLine />
-                </button>
+                  {{ item.average_review }}<RiStarSFill style="width: 16px" />
+                </p>
+                <p class="card-text text-success">{{ item.price }}$</p>
+                <div class="mt-4 d-flex justify-content-center">
+                  <router-link
+                    :to="`/en/product/${item.id}`"
+                    class="btn btn-outline-primary"
+                    >View Detail</router-link
+                  >
+
+                  <button
+                    @click="addToWishlist(item.id)"
+                    class="btn btn-outline-danger btn-icon ms-1"
+                  >
+                    <RiHeart3Line />
+                  </button>
+                  <button
+                    @click="addToCart(item.id)"
+                    class="btn btn-outline-success btn-icon ms-1"
+                  >
+                    <RiShoppingCartLine />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Pagination -->
-      <div class="mt-4 d-flex justify-content-center">
-        <ul class="pagination pagination-rounded mb-0 justify-content-end">
-          <li class="page-item">
-            <button
-              class="page-link"
-              @click="changePage(fetchedData.first_page_url)"
+        <!-- Pagination -->
+        <div class="mt-4 d-flex justify-content-center">
+          <ul class="pagination pagination-rounded mb-0 justify-content-end">
+            <li class="page-item">
+              <button
+                class="page-link"
+                @click="changePage(fetchedData.first_page_url)"
+              >
+                Previous
+              </button>
+            </li>
+            <li
+              v-for="(item, index) in fetchedData.links"
+              :key="index"
+              :class="{ 'page-item': true, active: item.active }"
             >
-              Previous
-            </button>
-          </li>
-          <li
-            v-for="(item, index) in fetchedData.links"
-            :key="index"
-            :class="{ 'page-item': true, active: item.active }"
-          >
-            <button
-              v-if="index !== 0 && index !== fetchedData.links.length - 1"
-              @click="changePage(item.url)"
-              class="page-link"
-            >
-              {{ index }}
-            </button>
-          </li>
+              <button
+                v-if="index !== 0 && index !== fetchedData.links.length - 1"
+                @click="changePage(item.url)"
+                class="page-link"
+              >
+                {{ index }}
+              </button>
+            </li>
 
-          <li class="page-item">
-            <button
-              class="page-link"
-              @click="changePage(fetchedData.next_page_url)"
-            >
-              Next
-            </button>
-          </li>
-        </ul>
+            <li class="page-item">
+              <button
+                class="page-link"
+                @click="changePage(fetchedData.next_page_url)"
+              >
+                Next
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>

@@ -27,12 +27,14 @@
         <div
           class="col-6 d-flex flex-column justify-content-center align-items-center"
         >
-          <img
-            style="max-height: 500px; object-fit: cover"
-            :src="`http://127.0.0.1:8000/${promotionProducts[0].image}`"
-            class="card-img"
-            alt="..."
+          <div style="max-height: 500px;" class="my-banner">
+            <img
+              style="height: 100%; object-fit: cover"
+              :src="`http://127.0.0.1:8000/${promotionProducts[0].image}`"
+              class="card-img"
+              alt="..."
           />
+          </div>
         </div>
       </div>
 
@@ -50,13 +52,16 @@
           businesses.
         </p>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div v-for="item in promotionProducts" class="col">
+          <div v-for="item in promotionProducts" :key="item.id" class="col">
             <div class="card">
-              <img
-                :src="`http://127.0.0.1:8000/${item.image}`"
-                class="card-img-top"
-                alt="..."
-              />
+              <div class="" style="height: 300px;">
+                <img
+                style="height: 100%; object-fit: contain;"
+                  :src="`http://127.0.0.1:8000/${item.image}`"
+                  class="card-img-top"
+                  alt="..."
+                />
+              </div>
               <div class="card-body">
                 <h5 class="card-title" style="font-size: 18px">
                   {{ item.name }}
@@ -108,13 +113,16 @@
           businesses.
         </p>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div v-for="item in fetchedData.data" class="col">
+          <div v-for="item in fetchedData.data" :key="item.id" class="col">
             <div class="card">
-              <img
-                :src="`http://127.0.0.1:8000/${item.image}`"
-                class="card-img-top"
-                alt="..."
-              />
+              <div class="" style="height: 300px;">
+                <img
+                style="height: 100%; object-fit: contain;"
+                  :src="`http://127.0.0.1:8000/${item.image}`"
+                  class="card-img-top"
+                  alt="..."
+                />
+              </div>
               <div class="card-body">
                 <h5 class="card-title" style="font-size: 18px">
                   {{ item.name }}
@@ -460,6 +468,10 @@ export default {
   }
   .phearith-bannner-description {
     font-size: 20px;
+  }
+  .my-banner{
+    max-height: 300px !important;
+  
   }
 }
 

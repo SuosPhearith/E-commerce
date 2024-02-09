@@ -2,39 +2,35 @@
   <div class="page-content">
     <div class="container-fluid text-center">
       <!-- bg1 -->
-      <div class="row phearith-banner" v-if="promotionProducts.length > 0">
-        <div
-          class="col-6 d-flex flex-column justify-content-center align-items-end"
-          style="height: 100%"
-        >
+      <div class="row phearith-banner">
+        <div class="col-6 d-flex justify-content-center align-items-center">
           <div
-            class="d-flex flex-column justify-content-center align-items-center"
+            class="d-flex justify-content-center align-items-center flex-column"
           >
-            <h1 class="phearith-banner-title">
-              {{ promotionProducts[0].name }}
-            </h1>
-            <h4 class="my-3 phearith-bannner-description">
-              {{ promotionProducts[0].description }}
-            </h4>
-            <router-link
-              :to="`/en/product/${promotionProducts[0].id}`"
-              class="btn btn-outline-primary"
-              style="width: 150px"
-              >Shop Now</router-link
-            >
+            <h1 class="my-banner-title">Welcome to Furniture Store</h1>
+            <p class="my-banner-content">
+              Welcome to our furniture store! Discover timeless pieces that
+              elevate your living space. Browse our curated collection of sofas,
+              chairs, tables, and more, designed to inspire and enhance your
+              home. From modern to classic styles, find the perfect furniture to
+              complement your aesthetic.
+            </p>
+            <div>
+              <router-link
+                to="/en/shop"
+                class="btn btn-outline-primary mt-4 px-4"
+              >
+                Shop now
+              </router-link>
+            </div>
           </div>
         </div>
-        <div
-          class="col-6 d-flex flex-column justify-content-center align-items-center"
-        >
-          <div style="max-height: 500px;" class="my-banner">
-            <img
-              style="height: 100%; object-fit: cover"
-              :src="`http://127.0.0.1:8000/${promotionProducts[0].image}`"
-              class="card-img"
-              alt="..."
+        <div class="col-6 d-flex justify-content-center align-items-center">
+          <img
+            src="../../assets/images/me/banner.png"
+            class="my-banner-image"
+            alt=""
           />
-          </div>
         </div>
       </div>
 
@@ -54,19 +50,24 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div v-for="item in promotionProducts" :key="item.id" class="col">
             <div class="card">
-              <div class="" style="height: 300px;">
+              <div class="" style="height: 300px">
                 <img
-                style="height: 100%; object-fit: contain;"
+                  style="height: 100%; object-fit: contain"
                   :src="`http://127.0.0.1:8000/${item.image}`"
                   class="card-img-top"
                   alt="..."
                 />
               </div>
               <div class="card-body">
-                <h5 class="card-title" style="font-size: 18px">
+                <h5
+                  class="card-title clamped-text-title"
+                  style="font-size: 18px"
+                >
                   {{ item.name }}
                 </h5>
-                <p class="card-text text-secondary">{{ item.description }}</p>
+                <p class="card-text text-secondary clamped-text">
+                  {{ item.description }}
+                </p>
                 <p
                   class="card-text text-danger d-flex align-items-center justify-content-center"
                 >
@@ -115,19 +116,24 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div v-for="item in fetchedData.data" :key="item.id" class="col">
             <div class="card">
-              <div class="" style="height: 300px;">
+              <div class="" style="height: 300px">
                 <img
-                style="height: 100%; object-fit: contain;"
+                  style="height: 100%; object-fit: contain"
                   :src="`http://127.0.0.1:8000/${item.image}`"
                   class="card-img-top"
                   alt="..."
                 />
               </div>
               <div class="card-body">
-                <h5 class="card-title" style="font-size: 18px">
+                <h5
+                  class="card-title clamped-text-title"
+                  style="font-size: 18px"
+                >
                   {{ item.name }}
                 </h5>
-                <p class="card-text text-secondary">{{ item.description }}</p>
+                <p class="card-text text-secondary clamped-text">
+                  {{ item.description }}
+                </p>
                 <p
                   class="card-text text-danger d-flex align-items-center justify-content-center"
                 >
@@ -166,34 +172,31 @@
       </div>
 
       <!-- bg4 -->
-      <div class="row phearith-banner" v-if="promotionProducts.length > 1">
-        <div
-          class="col-6 d-flex flex-column justify-content-center align-items-center"
-        >
+      <div class="row phearith-banner">
+        <div class="col-6 d-flex justify-content-center align-items-center">
           <img
-            :src="`http://127.0.0.1:8000/${promotionProducts[1].image}`"
-            class="card-img"
-            alt="..."
+            src="../../assets/images/me/banner2.png"
+            class="my-banner-image"
+            alt=""
           />
         </div>
-        <div
-          class="col-6 d-flex flex-column justify-content-center align-items-start"
-          style="height: 100%"
-        >
+        <div class="col-6 d-flex justify-content-center align-items-center">
           <div
-            class="d-flex flex-column justify-content-center align-items-center"
+            class="d-flex justify-content-center align-items-center flex-column"
           >
-            <h1 class="phearith-bannner-title">
-              {{ promotionProducts[1].name }}
-            </h1>
-            <h4 class="my-3 phearith-bannner-description">
-              {{ promotionProducts[1].description }}
-            </h4>
-            <router-link
-              :to="`/en/product/${promotionProducts[1].id}`"
-              class="btn btn-primary"
-              >Shop Now</router-link
-            >
+            <h1 class="my-banner-title">Shopping with Furniture Store</h1>
+            <p class="my-banner-content">
+              Explore quality craftsmanship and exceptional comfort for every
+              room. Start creating your dream home today!
+            </p>
+            <div>
+              <router-link
+                to="/en/shop"
+                class="btn btn-outline-primary mt-4 px-4"
+              >
+                Shop now
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
@@ -241,7 +244,9 @@
                     </p>
                     <h5 class="text-primary text-center mb-4">Up to 5 units</h5>
                     <div class="d-grid">
-                      <router-link to="/en/shop" class="btn btn-primary mt-4"
+                      <router-link
+                        to="/en/shop"
+                        class="btn btn-outline-primary mt-4"
                         >Shop Now</router-link
                       >
                     </div>
@@ -282,7 +287,9 @@
                       Up to 10 units
                     </h5>
                     <div class="d-grid">
-                      <router-link to="/en/shop" class="btn btn-success mt-4"
+                      <router-link
+                        to="/en/shop"
+                        class="btn btn-outline-success mt-4"
                         >Shop Now</router-link
                       >
                     </div>
@@ -325,7 +332,9 @@
                       Up to 30 units
                     </h5>
                     <div class="d-grid">
-                      <button class="btn btn-primary mt-4">Shop Now</button>
+                      <button class="btn btn-outline-primary mt-4">
+                        Shop Now
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -341,6 +350,7 @@
 import { RiHeart3Line, RiShoppingCartLine, RiStarSFill } from "vue-remix-icons";
 import { RouterLink } from "vue-router";
 import fetchData from "../../services/fetchData.js";
+import { message } from "ant-design-vue";
 export default {
   components: {
     RiHeart3Line,
@@ -392,7 +402,9 @@ export default {
         await fetchData("POST", "http://127.0.0.1:8000/api/v1/cart", {
           product_id: productId,
         });
+        message.success("Added");
       } catch (error) {
+        message.warning("Added already!");
         console.error("Error fetching data:", error);
       }
     },
@@ -402,7 +414,9 @@ export default {
         await fetchData("POST", "http://127.0.0.1:8000/api/v1/wishlist", {
           product_id: productId,
         });
+        message.success("Added");
       } catch (error) {
+        message.warning("Added already!");
         console.error("Error fetching data:", error);
       }
     },
@@ -411,6 +425,30 @@ export default {
 </script>
 
 <style scoped>
+.clamped-text-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.clamped-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.my-banner-image {
+  width: 100%;
+}
+.my-banner-title {
+  font-size: 60px;
+  font-weight: 700;
+  width: 420px;
+}
+.my-banner-content {
+  margin-top: 30px;
+  width: 460px;
+}
 .see-more {
   cursor: pointer;
   font-size: 25px;
@@ -419,7 +457,7 @@ export default {
   color: goldenrod;
 }
 .phearith-banner {
-  height: 600px;
+  height: 500px;
   background-color: #fff9c4;
 }
 .phearith-see-more {
@@ -439,10 +477,21 @@ export default {
 @media (max-width: 575.98px) {
   /* Your CSS rules for extra small devices go here */
   .phearith-banner {
-    height: 300px;
+    height: 200px;
   }
   .phearith-bannner-description {
     font-size: 16px;
+  }
+  .my-banner {
+    max-height: 300px !important;
+  }
+  .my-banner-title {
+    font-size: 20px;
+    font-weight: 700;
+    width: 100%;
+  }
+  .my-banner-content {
+    display: none;
   }
 }
 
@@ -458,20 +507,40 @@ export default {
   .phearith-bannner-title {
     font-size: 20px;
   }
+  .my-banner {
+    max-height: 400px !important;
+  }
+  .my-banner-title {
+    font-size: 30px;
+    font-weight: 700;
+    width: 100%;
+  }
+  .my-banner-content {
+    margin-top: 30px;
+    width: 100%;
+  }
 }
 
 /* CSS for screens between 768px and 991.98px (medium devices) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   /* Your CSS rules for medium devices go here */
   .phearith-banner {
-    height: 400px;
+    height: 450px;
   }
   .phearith-bannner-description {
     font-size: 20px;
   }
-  .my-banner{
+  .my-banner {
     max-height: 300px !important;
-  
+  }
+  .my-banner-title {
+    font-size: 40px;
+    font-weight: 700;
+    width: 300px;
+  }
+  .my-banner-content {
+    margin-top: 30px;
+    width: 320px;
   }
 }
 
@@ -480,6 +549,15 @@ export default {
   /* Your CSS rules for large devices go here */
   .phearith-banner {
     height: 450px;
+  }
+  .my-banner-title {
+    font-size: 40px;
+    font-weight: 700;
+    width: 300px;
+  }
+  .my-banner-content {
+    margin-top: 30px;
+    width: 320px;
   }
 }
 

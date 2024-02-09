@@ -34,7 +34,8 @@
                 <p>All</p>
               </div>
               <div
-                v-for="category in categories.data" :key="category.id"
+                v-for="category in categories.data"
+                :key="category.id"
                 @click="filterByCategory(`/?category=${category.id}`)"
                 class="p-2 me-2 px-4 d-flex justify-content-center align-items-center category-item"
                 style="width: fit-content; border-radius: 5px"
@@ -54,7 +55,9 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
           </form>
         </nav>
       </div>
@@ -64,21 +67,30 @@
     <div class="py-5">
       <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div v-for="item in fetchedData.data" :key="item.id" class="col text-center">
+          <div
+            v-for="item in fetchedData.data"
+            :key="item.id"
+            class="col text-center"
+          >
             <div class="card">
-              <div class="" style="height: 300px;">
-                  <img
-                  style="height: 100%; object-fit: contain;"
-                    :src="`http://127.0.0.1:8000/${item.image}`"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                </div>
+              <div class="" style="height: 300px">
+                <img
+                  style="height: 100%; object-fit: contain"
+                  :src="`http://127.0.0.1:8000/${item.image}`"
+                  class="card-img-top"
+                  alt="..."
+                />
+              </div>
               <div class="card-body">
-                <h5 class="card-title" style="font-size: 18px">
+                <h5
+                  class="card-title clamped-text-title"
+                  style="font-size: 18px"
+                >
                   {{ item.name }}
                 </h5>
-                <p class="card-text text-secondary">{{ item.description }}</p>
+                <p class="card-text text-secondary clamped-text">
+                  {{ item.description }}
+                </p>
                 <p
                   class="card-text text-danger d-flex align-items-center justify-content-center"
                 >
@@ -146,7 +158,7 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -158,6 +170,7 @@ import {
 } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
 import { RouterLink } from "vue-router";
+import { message } from "ant-design-vue";
 export default {
   components: {
     RouterLink,
@@ -241,7 +254,9 @@ export default {
         await fetchData("POST", "http://127.0.0.1:8000/api/v1/cart", {
           product_id: productId,
         });
+        message.success("Added");
       } catch (error) {
+        message.warning("Added already!");
         console.error("Error fetching data:", error);
       }
     },
@@ -251,7 +266,9 @@ export default {
         await fetchData("POST", "http://127.0.0.1:8000/api/v1/wishlist", {
           product_id: productId,
         });
+        message.success("Added");
       } catch (error) {
+        message.warning("Added already!");
         console.error("Error fetching data:", error);
       }
     },
@@ -260,10 +277,22 @@ export default {
 </script>
 
 <style scoped>
+.clamped-text-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.clamped-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .category-item {
   background-color: rgb(213, 198, 110);
   cursor: pointer;
-  min-width: 230px;
+  min-width: 130px;
 }
 .category-item-all {
   background-color: rgb(213, 198, 110);

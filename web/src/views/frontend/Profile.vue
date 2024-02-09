@@ -93,6 +93,7 @@
 <script>
 import { RiArrowRightSLine, RiDeleteBinFill } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
+import { message } from "ant-design-vue";
 export default {
   components: {
     RiArrowRightSLine,
@@ -134,6 +135,7 @@ export default {
         this.getMe();
         this.password = "";
         this.new_password = "";
+        message.success("Updated successfully!");
       } catch (error) {
         console.error("Error fetching data:", error);
       }

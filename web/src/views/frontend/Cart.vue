@@ -78,6 +78,7 @@
 <script>
 import { RiArrowRightSLine, RiDeleteBinFill } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
+import { message } from "ant-design-vue";
 export default {
   components: {
     RiArrowRightSLine,
@@ -122,8 +123,10 @@ export default {
           null
         );
         this.getCart();
+        message.success("Removed successfully!");
       } catch (error) {
         console.error("Error fetching data:", error);
+        message.success("Removed fail!");
       }
     },
   },

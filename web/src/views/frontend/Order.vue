@@ -135,6 +135,7 @@
 <script>
 import { RiArrowRightSLine } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
+import { message } from "ant-design-vue";
 export default {
   components: {
     RiArrowRightSLine,
@@ -193,8 +194,10 @@ export default {
             product: productArrayToSend,
           }
         );
+        message.success("Order successfully!");
         this.$router.push({ name: "home_page" });
       } catch (error) {
+        message.error("Please check your input!");
         console.error("Error fetching data:", error);
       }
     },

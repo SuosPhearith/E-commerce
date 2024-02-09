@@ -19,6 +19,10 @@ import ReviewVue from "./views/frontend/Review.vue";
 
 const routes = [
   {
+    path: "/",
+    redirect: "/en/home",
+  },
+  {
     path: "/auth/login",
     name: "login_page",
     component: LoginView,

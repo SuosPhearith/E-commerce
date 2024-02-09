@@ -2,11 +2,11 @@
   <div class="mb-5">
     <div>
       <div class="my-breadcrumb my-breadcrumb-image">
-        <h2 class="my-breadcrumb-title">My Pruduct</h2>
+        <h2 class="my-breadcrumb-title">My Product</h2>
         <div class="my-breadcrumb-item">
           <RouterLink to="/en/home">Home</RouterLink
           ><RiArrowRightSLine style="width: 15px" />
-          <a href="">My Pruduct</a>
+          <a href="">My Product</a>
         </div>
       </div>
     </div>

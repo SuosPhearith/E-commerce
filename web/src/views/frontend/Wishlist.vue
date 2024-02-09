@@ -74,6 +74,7 @@ import {
   RiShoppingCartLine,
 } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
+import { message } from "ant-design-vue";
 export default {
   components: {
     RiArrowRightSLine,
@@ -109,6 +110,7 @@ export default {
           `http://127.0.0.1:8000/api/v1/wishlist/${id}`,
           null
         );
+        message.success("Removed!");
         this.getWishlist();
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -125,7 +127,7 @@ export default {
           `http://127.0.0.1:8000/api/v1/wishlist/${wishlistId}`,
           null
         );
-
+        message.success("add successfully!");
         this.getWishlist();
       } catch (error) {
         console.error("Error fetching data:", error);

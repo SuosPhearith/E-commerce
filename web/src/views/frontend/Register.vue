@@ -110,6 +110,7 @@
 <script>
 import fetchData from "../../services/fetchData.js";
 import { RiGoogleFill } from "vue-remix-icons";
+import { message } from "ant-design-vue";
 
 export default {
   components: {
@@ -138,11 +139,12 @@ export default {
           "http://127.0.0.1:8000/api/v1/auth/register",
           userData
         );
-
+        message.success("Create successfully!");
         this.$router.push({ name: "login_page" });
 
         // Optionally, you can redirect the user to another page upon successful registration
       } catch (error) {
+        message.error("Please input all fields!");
         console.error("Error registering user:", error);
       }
     },

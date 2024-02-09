@@ -25,10 +25,10 @@ class ReviewController extends BaseCrudController
             // Retrieve reviews for the product with eager loading of users
             $reviews = Review::where('product_id', $item->id)
                 ->with('user') // Eager load the user associated with each review
-                ->paginate(9);
+                ->paginate(4);
 
             // Return the product along with its reviews
-            return response()->json(['reviews' => $reviews], Response::HTTP_OK);
+            return response()->json($reviews, Response::HTTP_OK);
         } catch (ValidationException $e) {
             return $this->handleValidationException($e);
         } catch (\Exception $e) {

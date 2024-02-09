@@ -15,7 +15,7 @@
                     <h5 class="text-muted fw-normal mb-4">
                       Welcome Furnitury store.
                     </h5>
-                    <form class="forms-sample">
+                    <form @submit.prevent="login()">
                       <div class="mb-3">
                         <label for="userEmail" class="form-label"
                           >Email address</label
@@ -42,11 +42,12 @@
                         />
                       </div>
                       <div>
-                        <a
-                          @click="login"
+                        <button
+                          type="submit"
                           class="btn btn-primary me-2 mb-2 mb-md-0 text-white"
-                          >Login</a
                         >
+                          Login
+                        </button>
                         <button
                           type="button"
                           class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0"
@@ -76,6 +77,7 @@
 import { RouterLink } from "vue-router";
 import { RiGoogleFill } from "vue-remix-icons";
 import fetchData from "../../services/fetchData.js";
+import { message } from "ant-design-vue";
 
 export default {
   data() {
@@ -99,6 +101,7 @@ export default {
         localStorage.setItem("token", token);
         this.$router.push({ name: "home_page" });
       } catch (error) {
+        message.error("Invalid credetail!");
         console.error("Error logging in:", error);
       }
     },
